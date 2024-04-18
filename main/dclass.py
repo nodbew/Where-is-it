@@ -1,4 +1,4 @@
-from components.error import raise_error
+from components.postprocess import raise_error
 import json
 import streamlit as st
 import pandas as pd
