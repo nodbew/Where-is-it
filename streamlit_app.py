@@ -38,8 +38,8 @@ with data:
     Data.delete(name)
 
   # Edit data
-  st.info('直接書き換えられます！')
   input = st.text_input('絞り込み...',key='edit_input')
+  st.info('直接書き換えられます！')
   fullmatch = st.checkbox('完全一致',key='edit_fullmatch')
   df = st.dataframe(general.filter(input,fullmatch))
   if st.button('変更する'):
