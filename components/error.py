@@ -16,4 +16,10 @@ def raise_error(message,execution=2):
 # postprocess
 for key in st.session_state._errors.keys():
   st.session_state._errors[key] -= 1
+
+  # Stop raising error when there is no execution count remaining
+  if st.session_state._errors[key] == 0:
+    del st.session_state._errors[key]
+
+  # Raise error
   st.error(st.session_state._errors[key])
