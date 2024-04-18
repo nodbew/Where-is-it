@@ -26,11 +26,11 @@ with data:
   # Add a data
   st.title('追加')
   st.info('直接書き込めます...')
-  edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']))
+  edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
   if st.button('追加する'):
     general.broadcast_add(edited_df)
     # Reset dataframe for adding
-    edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']))
+    edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
 
   # Delete data
   st.title('削除')
@@ -50,10 +50,12 @@ with files:
   st.write('保存タブへようこそ！ここでは現在のデータをファイルに保存したり、過去に保存したファイルから読み込んだりできます')
 
   # Save to a file
+  st.title('保存')
   st.download_button(label = '保存する',
                      data = Data.save_to_file())
 
   # Load from a file
+  st.title('アップロード')
   f = st.file_uploader('アップロード')
   if f != None:
     Data.load_from_file(f)
