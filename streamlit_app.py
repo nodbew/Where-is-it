@@ -17,7 +17,8 @@ main,data,files = st.tabs(['一覧','データ管理','保存'])
 with main:
   st.write('ようこそ一覧へ！ここでは登録されたものの位置の一覧を確認できます')
   input = st.text_input('絞り込み...')
-  st.dataframe(general.filter(input))
+  fullmatch = st.checkbox('完全一致')
+  st.dataframe(general.filter(input,fullmatch))
 
 with data:
   st.write('ようこそデータ管理へ！ここでは登録を変更したり、削除したりできます')
