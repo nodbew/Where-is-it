@@ -43,18 +43,24 @@ class DataAdminister:
 
   def load_from_file(self,file):
     data = file.read()
-    
+
+    # Get dictionary from file
     try:
       new_dic = json.loads(data)
     except JSONDecodeError:
       raise_error('無効なファイル形式です')
-      
+
+    # Assert new_dic is a dictionary
     if type(new_dic) != dict:
       raise_error('無効なファイル形式です')
-      
-    if not all(map(isinstance,new_dic.items(),[(str,str)]*len(new_dic))):
+
+    # Assert all elements in new_dic are str
+    if not all(map(isinstance,new_dic.keys(),[str]*len(new_dic))):
       raise_error('無効なファイル形式です')
-      
+    if not all(map(isinstance,new_dic.values(),[str]*len(new_dic))):
+      raise_error('無効なファイル形式です')
+
+    # Assert there are no invalid keys
     for invalid in SYSTEM_OPS:
       try:
         del new_dic[invalid]
@@ -63,5 +69,7 @@ class DataAdminister:
       except KeyError:
         continue
 
-    self._dic |= new_dic
+    # Add data
+    for key,value in new_dic.items():
+      self.add(key,value) 
     return
