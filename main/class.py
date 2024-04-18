@@ -5,7 +5,7 @@ import streamlit as st
 
 class DataAdminister:
   '''
-  Holds an object's location with its name.
+  Collection of methods to edit datas in st.session_state.name_location_dictionary
   '''
   def __init__(self):
     st.session_state.name_location_dictionary = dict()
