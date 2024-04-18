@@ -1,5 +1,5 @@
 import streamlit as st
-st.session_state._errors = {}
+st.session_state._postprocess = dict()
 
 def raise_error(message,execution=2):
   postprocess = st.session_state._postprocess
