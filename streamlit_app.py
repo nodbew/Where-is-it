@@ -5,7 +5,7 @@ from main.dclass import DataAdminister
 st.session_state._DataAdmin = DataAdminister()
 
 import pandas as pd
-from components import general
+from main import general
 
 # Initializations
 # Alias; easier to write
