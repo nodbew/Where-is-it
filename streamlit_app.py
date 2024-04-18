@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from components import general
-from main.class import DataAdminister
+from main.dclass import DataAdminister
 
 # Initializations
 st.session_state._DataAdmin = DataAdminister()
