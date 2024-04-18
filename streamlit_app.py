@@ -1,10 +1,13 @@
 import streamlit as st
+from main.dclass import DataAdminister
+# This has to be here because components.general uses session_state._name_location_dictionaru
+# Which is defined in DataAdminister.__init__()
+st.session_state._DataAdmin = DataAdminister()
+
 import pandas as pd
 from components import general
-from main.dclass import DataAdminister
 
 # Initializations
-st.session_state._DataAdmin = DataAdminister()
 # Alias; easier to write
 Data = st.session_state._DataAdmin
 
