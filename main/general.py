@@ -15,8 +15,7 @@ def broadcast_add(df):
   # Drop row with None since it might cause an error (Key already exists)
   indexes = (df['名前'] != None)
   items = df[indexes].to_numpy()
-  st.write(items)
-
+  
   # Add datas
   add = st.session_state._DataAdmin.add
   for name,location in items:
