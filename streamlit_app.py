@@ -47,11 +47,11 @@ with data:
     general.edit(df)
 
 with files:
-  st.write('')
+  st.write('保存タブへようこそ！ここでは現在のデータをファイルに保存したり、過去に保存したファイルから読み込んだりできます')
 
   # Save to a file
-  st.write('保存する')
-  st.download_button(Data.save_to_file)
+  st.download_button(label = '保存する',
+                     data = Data.save_to_file)
 
   # Load from a file
   f = st.file_uploader('アップロード')
