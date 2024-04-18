@@ -40,8 +40,8 @@ with data:
 
   # Edit data
   st.info('直接書き換えられます！')
-  edit_input = st.text_input('絞り込み...')
-  df = st.dataframe(general.filter(edit_input))
+  input = st.text_input('絞り込み...',key='edit_input')
+  df = st.dataframe(general.filter(input))
   if st.button('変更する'):
     general.edit(df)
 
