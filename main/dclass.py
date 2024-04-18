@@ -35,7 +35,7 @@ class DataAdminister:
     items = np.array(self._dic.items(),dtype='U').reshape((-1,2))
     return pd.DataFrame(items,columns=['名前','場所'])
 
-  def save_to_file(self)
+  def save_to_file(self):
     return json.dumps(self._dic).encode()
 
   def load_from_file(self,file):
