@@ -9,22 +9,21 @@ class DataAdminister:
   '''
   def __init__(self):
     st.session_state._name_location_dictionary = dict()
-    self._dic = st.session_state._name_location_dictionary
     return
 
   def add(self,name,location):
-      if name in self._dic:
-        raise_error(f'{name}は既に{self._dic[name]}に存在します')
+      if name in st.session_state._name_location_dictionary:
+        raise_error(f'{name}は既に{st.session_state._name_location_dictionary[name]}に存在します')
         return
         
       else:
-        self._dic[name] = location
+        st.session_state._name_location_dictionary[name] = location
         st.success('追加しました')
         return
 
   def delete(self,name):
     try:
-      del self._dic[name]
+      del st.session_state._name_location_dictionary[name]
       st.success('削除しました')
     except KeyError:
       raise_error(f'{name}という名前のものはありません')
@@ -32,11 +31,11 @@ class DataAdminister:
 
   def show_data(self):
     # Create items arra
-    items = np.array(self._dic.items(),dtype='U').reshape((-1,2))
+    items = np.array(st.session_state._name_location_dictionary.items(),dtype='U').reshape((-1,2))
     return pd.DataFrame(items,columns=['名前','場所'])
 
   def save_to_file(self):
-    return json.dumps(self._dic).encode()
+    return json.dumps(st.session_state._name_location_dictionary).encode()
 
   def load_from_file(self,file):
     data = file.read()
