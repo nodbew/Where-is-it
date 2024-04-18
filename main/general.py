@@ -13,9 +13,8 @@ def broadcast_add(df):
   Base method is main.class.DataAdministor.add
   '''
   # Drop row with None since it might cause an error (Key already exists)
-  st.write(df)
   indexes = (df['名前'] != None)
-  items = df[indexes]
+  items = df[indexes].to_numpy()
   st.write(items)
 
   # Add datas
