@@ -1,4 +1,3 @@
-from setting.parameters import SYSTEM_OPS
 from components.error import raise_error
 import json
 import streamlit as st
@@ -10,15 +9,10 @@ class DataAdminister:
   '''
   def __init__(self):
     st.session_state.name_location_dictionary = dict()
-    self._dic = st.session_state.name_location_dictionary
+    self._dic = st.session_state._name_location_dictionary
     return
 
   def add(self,name,location):
-    if name in SYSTEM_OPS:
-      raise_error(f'{name}は使用できません')
-      return
-      
-    else:
       if name in self._dic:
         raise_error(f'{name}は既に{self._dic[name]}に存在します')
         return
@@ -60,15 +54,6 @@ class DataAdminister:
       raise_error('無効なファイル形式です')
     if not all(map(isinstance,new_dic.values(),[str]*len(new_dic))):
       raise_error('無効なファイル形式です')
-
-    # Assert there are no invalid keys
-    for invalid in SYSTEM_OPS:
-      try:
-        del new_dic[invalid]
-        raise_error('無効なファイル形式です')
-        
-      except KeyError:
-        continue
 
     # Add data
     for key,value in new_dic.items():
