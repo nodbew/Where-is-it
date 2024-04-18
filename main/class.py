@@ -1,5 +1,6 @@
 from setting.system_use_variables import SYSTEM_OPS
 from components.error import raise_error
+import json
 
 class DataAdminister:
   '''
@@ -35,5 +36,23 @@ class DataAdminister:
     return bytes(json.dumps(self._dic))
 
   def load_from_file(self,file):
-    data = file.read
-    new_dic = json.loads(data)
+    data = file.read()
+    
+    try:
+      new_dic = json.loads(data)
+    except JSONDecodeError:
+      raise_error('無効なファイル形式です')
+      
+    if type(new_dic) != dict:
+      raise_error('無効なファイル形式です')
+      
+    for invalid in SYSTEM_OPS:
+      try:
+        del new_dic[invalid]
+        raise_error('無効なファイル形式です')
+        
+      except KeyError:
+        continue
+
+    new_dic |= self._dic
+    return
