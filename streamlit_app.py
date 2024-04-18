@@ -55,4 +55,5 @@ with files:
 
   # Load from a file
   f = st.file_uploader('アップロード')
-  Data.load_from_file(f)
+  if f != None:
+    Data.load_from_file(f)
