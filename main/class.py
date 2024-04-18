@@ -32,3 +32,8 @@ class DataAdminister:
     return
 
   def save_to_file(self):
+    return bytes(json.dumps(self._dic))
+
+  def load_from_file(self,file):
+    data = file.read
+    new_dic = json.loads(data)
