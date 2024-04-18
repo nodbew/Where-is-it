@@ -18,6 +18,7 @@ class DataAdminister:
         
       else:
         st.session_state._name_location_dictionary[name] = location
+        st.write(st.session_state._name_location_dictionary)
         st.success('追加しました')
         return
 
