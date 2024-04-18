@@ -28,12 +28,7 @@ class DataAdminister:
     except KeyError:
       raise_error(f'{name}という名前のものはありません')
     return
-
-  def show_data(self):
-    # Create items array
-    items = np.array(st.session_state._name_location_dictionary.items(),dtype='U').reshape((-1,2))
-    return pd.DataFrame(items,columns=['名前','場所'])
-
+    
   def save_to_file(self):
     return json.dumps(st.session_state._name_location_dictionary).encode()
 
