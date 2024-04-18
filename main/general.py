@@ -27,12 +27,23 @@ def _name_location_dic_to_df():
   names,locations = np.array([dic.keys()]),np.array([dic.values()])
   return pd.DataFrame(np.stack([names,locations]).transpose(),columns=['名前','場所'])
 
-def filter(input): 
+def filter(input,fullmatch): 
   '''
   Filters dataframe by whether input is contained in a key of st.session_state._name_location_dictionary
   '''
-  df = _name_location_dic_to_df()
-  return df[df['名前'].isin(input)]
+  if fullmatch:
+    try:
+      return pd.DataFrame([[input,st.session_state._name_location_dictionary[input]]],
+                          columns = ['名前','場所'])
+    except KeyError:
+      return pd.DataFrame([[None,None]],columns = ['名前','場所'])
+
+  else:
+    names = [name for name in st.session_state._name_location_dictionary.keys() 
+             if name.find(input) != -1]
+    values = [st.session_state._name_location_dictionary[name] for name in names]
+    return pd.DataFrame(np.array([names,values]).reshape(-1,2).transpose(),
+                        columns=['名前','場所'])
 
 def edit(new_df):
   items = new_df[new_df['名前'] != None]
