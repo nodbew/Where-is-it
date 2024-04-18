@@ -15,6 +15,7 @@ Data = st.session_state._DataAdmin
 main,data,files = st.tabs(['一覧','データ管理','保存'])
 
 with main:
+  st.write(st.session_state._name_location_dictionary)
   st.write('ようこそ一覧へ！ここでは登録されたものの位置の一覧を確認できます')
   input = st.text_input('絞り込み...')
   fullmatch = st.checkbox('完全一致')
