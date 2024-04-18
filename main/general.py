@@ -42,7 +42,7 @@ def filter(input,fullmatch):
     names = [name for name in st.session_state._name_location_dictionary.keys() 
              if name.find(input) != -1]
     values = [st.session_state._name_location_dictionary[name] for name in names]
-    return pd.DataFrame(np.array([names,values]).reshape(-1,2).transpose(),
+    return pd.DataFrame(np.array([names,values]).reshape(2,-1).transpose(),
                         columns=['名前','場所'])
 
 def edit(new_df):
