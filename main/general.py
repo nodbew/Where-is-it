@@ -25,7 +25,7 @@ def filter(input):
   Filters dataframe by whether input is contained in a key of st.session_state._name_location_dictionary
   '''
   df = st.session_state._name_location_dictionary
-  return df[df[column].isin(input)]
+  return df[df['名前'].isin(input)]
 
 def edit(new_df):
   items = new_df[new_df['名前'] != None]
