@@ -30,7 +30,7 @@ class DataAdminister:
     return
 
   def show_data(self):
-    # Create items arra
+    # Create items array
     items = np.array(st.session_state._name_location_dictionary.items(),dtype='U').reshape((-1,2))
     return pd.DataFrame(items,columns=['名前','場所'])
 
