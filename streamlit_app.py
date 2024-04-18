@@ -1,7 +1,7 @@
 import streamlit as st
 from main.dclass import DataAdminister
-# This has to be here because components.general uses session_state._name_location_dictionaru
-# Which is defined in DataAdminister.__init__()
+# This has to be here because components.general uses session_state._name_location_dictionary,
+# Which is defined in DataAdminister.__init__(), for initialization
 st.session_state._DataAdmin = DataAdminister()
 
 import pandas as pd
@@ -46,6 +46,7 @@ with data:
     general.edit(df)
 
 with files:
+  st.write(st.session_state._name_location_dictionary)
   st.write('保存タブへようこそ！ここでは現在のデータをファイルに保存したり、過去に保存したファイルから読み込んだりできます')
 
   # Save to a file
