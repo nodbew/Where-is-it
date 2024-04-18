@@ -29,8 +29,6 @@ with data:
   edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
   if st.button('追加する'):
     general.broadcast_add(edited_df)
-    # Reset dataframe for adding
-    edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
 
   # Delete data
   st.title('削除')
