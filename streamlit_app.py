@@ -51,7 +51,7 @@ with files:
 
   # Save to a file
   st.download_button(label = '保存する',
-                     data = Data.save_to_file)
+                     data = Data.save_to_file())
 
   # Load from a file
   f = st.file_uploader('アップロード')
