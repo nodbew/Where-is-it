@@ -33,8 +33,13 @@ class DataAdminister:
       raise_error(f'{name}という名前のものはありません')
     return
 
+  def show_data(self):
+    # Create items arra
+    items = np.array(self._dic.items(),dtype='U').reshape((-1,2))
+    return pd.DataFrame(items,columns=['名前','場所'])
+
   def save_to_file(self):
-    return bytes(json.dumps(self._dic))
+    return json.dumps(self._dic).encode()
 
   def load_from_file(self,file):
     data = file.read()
@@ -47,6 +52,9 @@ class DataAdminister:
     if type(new_dic) != dict:
       raise_error('無効なファイル形式です')
       
+    if not all(map(isinstance,new_dic.items(),[(str,str)]*len(new_dic))):
+      raise_error('無効なファイル形式です')
+      
     for invalid in SYSTEM_OPS:
       try:
         del new_dic[invalid]
@@ -55,5 +63,5 @@ class DataAdminister:
       except KeyError:
         continue
 
-    new_dic |= self._dic
+    self._dic |= new_dic
     return
