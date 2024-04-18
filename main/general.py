@@ -53,4 +53,5 @@ def edit(new_df):
       raise_error(f'{name}は登録されていません')
     else:
       name[df] = location
+  st.success('変更しました')
   return
