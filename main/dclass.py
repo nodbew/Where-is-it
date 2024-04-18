@@ -19,11 +19,13 @@ class DataAdminister:
         
       else:
         self._dic[name] = location
+        st.success('追加しました')
         return
 
   def delete(self,name):
     try:
       del self._dic[name]
+      st.success('削除しました')
     except KeyError:
       raise_error(f'{name}という名前のものはありません')
     return
@@ -33,7 +35,7 @@ class DataAdminister:
     items = np.array(self._dic.items(),dtype='U').reshape((-1,2))
     return pd.DataFrame(items,columns=['名前','場所'])
 
-  def save_to_file(self):
+  def save_to_file(self)
     return json.dumps(self._dic).encode()
 
   def load_from_file(self,file):
@@ -57,5 +59,7 @@ class DataAdminister:
 
     # Add data
     for key,value in new_dic.items():
-      self.add(key,value) 
+      self.add(key,value)
+
+    st.success('保存しました')
     return
