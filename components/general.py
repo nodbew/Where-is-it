@@ -3,6 +3,7 @@ Collection of functions that recieve pd.DataFrame as an input and apply
 main function to every element of it.
 Used to easen converting input to a correct format in streamlit_app.py
 '''
+from components.error import raise_error
 import streamlit as st
 
 def broadcast_add(df):
@@ -30,5 +31,8 @@ def edit(new_df):
   items = new_df[new_df['名前'] != None]
   df = st.session_state._name_location_dictionary
   for name,location in items:
-    name[df] = location
+    if name not in df:
+      raise_error(f'{name}は登録されていません')
+    else:
+      name[df] = location
   return
