@@ -46,9 +46,6 @@ def filter(input,fullmatch):
     values = np.array(
       [st.session_state._name_location_dictionary[name] for name in names]
     )
-    st.write(list(st.session_state._name_location_dictionary.keys()))
-    st.write(names)
-    st.write(values)
 
     return pd.DataFrame(np.stack([names,values]).transpose(),
                         columns=['名前','場所'])
