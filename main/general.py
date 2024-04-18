@@ -39,10 +39,15 @@ def filter(input,fullmatch):
       return pd.DataFrame([[None,None]],columns = ['名前','場所'])
 
   else:
-    names = [name for name in st.session_state._name_location_dictionary.keys() 
-             if name.find(input) != -1]
-    values = [st.session_state._name_location_dictionary[name] for name in names]
-    return pd.DataFrame(np.array([names,values]).reshape(2,-1).transpose(),
+    names = np.array(
+      [name for name in st.session_state._name_location_dictionary.keys() 
+       if name.find(input) != -1]
+    )
+    values = np.array(
+      [st.session_state._name_location_dictionary[name] for name in names]
+    )
+
+    return pd.DataFrame(np.stack([names,values]).transpose(),
                         columns=['名前','場所'])
 
 def edit(new_df):
