@@ -3,7 +3,7 @@ Collection of functions that recieve pd.DataFrame as an input and apply
 main function to every element of it.
 Used to easen converting input to a correct format in streamlit_app.py
 '''
-from components.error import raise_error
+from components.postprocess import raise_error
 import streamlit as st
 import numpy as np
 import pandas as pd
