@@ -1,6 +1,6 @@
 from components.postprocess import raise_error
 import streamlit as st
-from st.runtime.uploaded_file_manager import UploadedFile
+from st.uploaded_file_manager import UploadedFile
 import pandas as pd
 import json
 
