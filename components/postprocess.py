@@ -7,7 +7,7 @@ def initialize():
 
 def raise_error(message,execution=2):
   # Command to execute while postprocess
-  command = 'st.error(str(' + message + '))'
+  command = 'st.error("' + message + '")'
 
   # Have to raise 2 times because 1 will be executed when button is true
   # If only once, error will disappear due to a rerun after a button is released
@@ -19,7 +19,7 @@ def success(message,execution=2):
   postprocess = st.session_state._postprocess
 
   # Command to execute while postprocess
-  command = 'st.success(str(' + message + '))'
+  command = 'st.success("' + message + '")'
 
   if command in postprocess:
     postprocess[command] += execution
