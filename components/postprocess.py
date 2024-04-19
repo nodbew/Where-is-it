@@ -8,7 +8,7 @@ def raise_error(message,execution=2):
 
   # Have to raise 2 times because 1 will be executed when button is true
   # If only once, error will disappear due to a rerun after a button is released
-  if command  in st.session_state._postprocess:
+  if command in st.session_state._postprocess:
     st.session_state._postprocess[command] += execution
   else:
     st.session_state._postprocess[command] = execution
