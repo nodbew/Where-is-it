@@ -35,7 +35,10 @@ class DataAdminister:
     return json.dumps(st.session_state._name_location_dictionary).encode()
 
   def load_from_file(self,file):
-    data = file.getvalue()
+    if type(file) == st.UploadedFile:
+      data = file.getvalue()
+    elif type(file) == str:
+      data = st.session_state[file].getvalue()
 
     # Get dictionary from file
     try:
