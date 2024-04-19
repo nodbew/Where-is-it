@@ -32,7 +32,6 @@ def postprocess():
   # postprocess
   for key in st.session_state._postprocess.keys():
     st.session_state._postprocess[key] -= 1
-    st.write(key)
     # Execute command
     exec(key)
 
