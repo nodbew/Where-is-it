@@ -8,7 +8,6 @@ class DataAdminister:
   Collection of methods to edit datas in st.session_state.name_location_dictionary
   '''
   def __init__(self):
-    st.session_state._name_location_dictionary = dict()
     return
 
   def add(self,name,location):
