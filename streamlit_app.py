@@ -24,9 +24,9 @@ with data:
   st.title('追加')
   st.info('直接書き込めます...')
   edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
-  if st.button('追加する',
-               on_click = general.broadcast_add,
-               args = tuple(edited_df))
+  st.button('追加する',
+            on_click = general.broadcast_add,
+            args = tuple(edited_df))
 
   # Delete data
   st.title('削除')
