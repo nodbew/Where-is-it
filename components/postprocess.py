@@ -1,5 +1,6 @@
 import streamlit as st
-st.session_state._postprocess = dict()
+if "_postprocess" not in st.session_state:
+  st.session_state._postprocess = dict()
 
 def raise_error(message,execution=2):
   postprocess = st.session_state._postprocess
