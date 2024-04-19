@@ -1,7 +1,8 @@
 from components.postprocess import raise_error
-import json
 import streamlit as st
+from st.runtime.uploaded_file_manager import UploadedFile
 import pandas as pd
+import json
 
 class DataAdminister:
   '''
@@ -35,7 +36,7 @@ class DataAdminister:
     return json.dumps(st.session_state._name_location_dictionary).encode()
 
   def load_from_file(self,file):
-    if type(file) == st.UploadedFile:
+    if type(file) == UploadedFile:
       data = file.getvalue()
     elif type(file) == str:
       data = st.session_state[file].getvalue()
