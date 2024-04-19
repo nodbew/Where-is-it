@@ -2,6 +2,7 @@ import streamlit as st
 from main.dclass import DataAdminister
 # This has to be here because components.general uses session_state._name_location_dictionary,
 # Which is defined in DataAdminister.__init__(), for initialization
+st.session_state._name_location_dictionary = dict() # Initialization for DataAdminister
 st.session_state._DataAdmin = DataAdminister()
 
 import pandas as pd
@@ -19,8 +20,6 @@ with main:
   input = st.text_input('絞り込み...')
   fullmatch = st.checkbox('完全一致')
   main_df = st.dataframe(general.filter(input,fullmatch))
-  if st.button('検索'):
-    st.rerun()
 
 with data:
   st.write('ようこそデータ管理へ！ここでは登録を変更したり、削除したりできます')
