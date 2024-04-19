@@ -24,6 +24,7 @@ class DataAdminister:
         return
 
   def delete(self,name):
+    st.write(name)
     try:
       del st.session_state._name_location_dictionary[name]
       st.success('削除しました')
