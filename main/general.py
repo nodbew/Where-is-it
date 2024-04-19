@@ -21,7 +21,6 @@ def broadcast_add(df):
   add = st.session_state._DataAdmin.add
   for name,location in items:
     add(name,location)
-  st.success(f"debug info:{st.session_state._name_location_dictionary}")
   return
 
 def _name_location_dic_to_df():
