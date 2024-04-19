@@ -30,7 +30,7 @@ def success(message,execution=2):
 
 def postprocess():
   # postprocess
-  for key in st.session_state._postprocess.keys():
+  for key in copy(st.session_state._postprocess.keys()):
     st.session_state._postprocess[key] -= 1
     # Execute command
     exec(key)
