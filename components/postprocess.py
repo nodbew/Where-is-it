@@ -31,12 +31,17 @@ def success(message,execution=2):
 
 def postprocess():
   # postprocess
-  for key in copy(st.session_state._postprocess.keys()):
+  keys_to_delete = set()
+  for key in st.session_state._postprocess.keys():
     st.session_state._postprocess[key] -= 1
     # Execute command
     exec(key)
 
     # Stop raising error when there is no execution count remaining
     if st.session_state._postprocess[key] == 0:
+      keys_to_delete.add(key)
+
+    # Delete unneeded keys
+    for key in keys_to_delete:
       del st.session_state._postprocess[key]
   return
