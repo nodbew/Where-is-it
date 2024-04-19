@@ -1,12 +1,13 @@
 import streamlit as st
+import pandas as pd
 from main.dclass import DataAdminister
 
 # This has to be here because components.general uses session_state._name_location_dictionary,
 # Which is defined in DataAdminister.__init__(), for initialization
 st.session_state._DataAdmin = DataAdminister()
 
-import pandas as pd
 from main import general
+from components import postprocess
 
 # Necessary components
 main,data,files = st.tabs(['一覧','データ管理','保存'])
