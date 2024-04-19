@@ -7,7 +7,6 @@ from components.postprocess import raise_error
 import streamlit as st
 import numpy as np
 import pandas as pd
-from time import time
 
 def broadcast_add(df):
   '''
