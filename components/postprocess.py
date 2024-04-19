@@ -19,7 +19,7 @@ def success(message,execution=2):
   postprocess = st.session_state._postprocess
 
   # Command to execute while postprocess
-  command = 'st.success(' + message + ')'
+  command = 'st.success(str(' + message + '))'
 
   if command in postprocess:
     postprocess[command] += execution
