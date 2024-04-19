@@ -47,8 +47,9 @@ def filter(input,fullmatch):
     return result
 
 def edit(new_df):
-  st.write(new_df)
   items = new_df[new_df['名前'] != None]
+  st.write(new_df[new_df['名前'] != None])
+  st.write(items)
   for name,location in items:
     if name not in st.session_state._name_location_dictionary:
       raise_error(f'{name}は登録されていません')
