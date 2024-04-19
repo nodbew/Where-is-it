@@ -31,7 +31,7 @@ def filter(input,fullmatch):
   '''
   Filters dataframe by whether input is contained in a key of st.session_state._name_location_dictionary
   '''
-  raise_error('filter function successfully called')
+  st.success('filter function successfully called')
   if fullmatch:
     try:
       return pd.DataFrame([[input,st.session_state._name_location_dictionary[input]]],
