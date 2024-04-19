@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+from components import postprocess
+postprocess.initialize()
 from main.dclass import DataAdminister
 
 # This has to be here because components.general uses session_state._name_location_dictionary,
@@ -7,10 +9,12 @@ from main.dclass import DataAdminister
 st.session_state._DataAdmin = DataAdminister()
 
 from main import general
-from components import postprocess
 
 # Necessary components
 main,data,files = st.tabs(['一覧','データ管理','保存'])
+
+# Postprocessing
+postprocess.postprocess()
 
 with main:
   st.write('ようこそ一覧へ！ここでは登録されたものの位置の一覧を確認できます')
