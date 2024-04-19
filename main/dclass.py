@@ -13,6 +13,7 @@ class DataAdminister:
     return
 
   def add(self,name,location):
+      name = name.strip()
       if name in st.session_state._name_location_dictionary:
         raise_error(f'{name}は既に{st.session_state._name_location_dictionary[name]}に存在します')
         return
