@@ -17,6 +17,7 @@ class DataAdminister:
         
       else:
         st.session_state._name_location_dictionary[name] = location
+        st.write(st.session_state._name_location_dictionary)
         st.success(f'追加しました  debug info:args:{name},{location}')
         return
 
