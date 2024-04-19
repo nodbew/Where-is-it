@@ -17,7 +17,7 @@ class DataAdminister:
         
       else:
         st.session_state._name_location_dictionary[name] = location
-        st.success('追加しました')
+        st.success(f'追加しました  \n debug info:args:{name},{location}')
         return
 
   def delete(self,name):
