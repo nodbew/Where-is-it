@@ -41,7 +41,7 @@ def postprocess():
     if st.session_state._postprocess[key] == 0:
       keys_to_delete.add(key)
 
-    # Delete unneeded keys
-    for key in keys_to_delete:
-      del st.session_state._postprocess[key]
+  # Delete unneeded keys
+  for key in keys_to_delete:
+    del st.session_state._postprocess[key]
   return
