@@ -1,7 +1,10 @@
 import streamlit as st
+
 def initialize():
+  st.success("successfully called init")
   if "_postprocess" not in st.session_state:
-    st.session_state._postprocess = dict()
+    st.session_state["_postprocess"] = dict()
+    st.success("defined")
   return
 
 def raise_error(message,execution=2):
