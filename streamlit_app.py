@@ -8,10 +8,6 @@ st.session_state._DataAdmin = DataAdminister()
 import pandas as pd
 from main import general
 
-# Initializations
-# Alias; easier to write
-Data = st.session_state._DataAdmin
-
 # Necessary components
 main,data,files = st.tabs(['一覧','データ管理','保存'])
 
@@ -35,9 +31,10 @@ with data:
   st.title('削除')
   name = st.text_input('削除したいものの名前を入力してください')
   if st.button('削除する'):
-    Data.delete(name)
+    st.session)state._DataAdmin.delete(name)
 
   # Edit data
+  st.title('編集')
   input = st.text_input('絞り込み...',key='edit_input')
   fullmatch = st.checkbox('完全一致',key='edit_fullmatch')
   st.info('直接書き換えられます！')
@@ -52,10 +49,10 @@ with files:
   # Save to a file
   st.title('保存')
   st.download_button(label = '保存する',
-                     data = Data.save_to_file())
+                     data = st.session_state._DataAdmin.save_to_file())
 
   # Load from a file
   st.title('アップロード')
   f = st.file_uploader('アップロード')
   if f != None:
-    Data.load_from_file(f)
+    st.session_state._DataAdmin.load_from_file(f)
