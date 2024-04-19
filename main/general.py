@@ -50,7 +50,6 @@ def filter(input,fullmatch):
 
     result = pd.DataFrame(np.stack([names,values]).transpose(),
                           columns=['名前','場所'])
-    st.success(f'filter function successfully called on {time()}, returned {result}')
     return result
 
 def edit(new_df):
