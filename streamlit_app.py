@@ -56,5 +56,6 @@ with files:
   # Load from a file
   st.title('アップロード')
   f = st.file_uploader('アップロード',
+                       key = 'file',
                        on_click = st.session_state._DataAdmin.load_from_file,
-                       args = (f,))
+                       args = ('file',))
