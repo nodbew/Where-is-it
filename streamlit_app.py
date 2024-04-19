@@ -18,7 +18,9 @@ with main:
   st.write('ようこそ一覧へ！ここでは登録されたものの位置の一覧を確認できます')
   input = st.text_input('絞り込み...')
   fullmatch = st.checkbox('完全一致')
-  _ = st.dataframe(general.filter(input,fullmatch))
+  main_df = st.dataframe(general.filter(input,fullmatch))
+  if st.button('検索'):
+    st.rerun()
 
 with data:
   st.write('ようこそデータ管理へ！ここでは登録を変更したり、削除したりできます')
