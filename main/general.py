@@ -7,6 +7,7 @@ from components.postprocess import raise_error
 import streamlit as st
 import numpy as np
 import pandas as pd
+from time import time
 
 def broadcast_add(df):
   '''
@@ -31,7 +32,7 @@ def filter(input,fullmatch):
   '''
   Filters dataframe by whether input is contained in a key of st.session_state._name_location_dictionary
   '''
-  st.success('filter function successfully called')
+  st.success(f'filter function successfully called on {time}')
   if fullmatch:
     try:
       return pd.DataFrame([[input,st.session_state._name_location_dictionary[input]]],
