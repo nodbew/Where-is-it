@@ -32,8 +32,8 @@ def postprocess():
   # postprocess
   for key in st.session_state._postprocess.keys():
     st.session_state._postprocess[key] -= 1
-
-    # Raise error
+    st.write(key)
+    # Execute command
     exec(key)
 
     # Stop raising error when there is no execution count remaining
