@@ -45,7 +45,7 @@ with data:
   input = st.text_input('絞り込み...',key='edit_input')
   fullmatch = st.checkbox('完全一致',key='edit_fullmatch')
   st.info('直接書き換えられます！')
-  edit_tab_df = st.dataframe(general.filter(input,fullmatch))
+  edit_tab_df = st.data_editor(general.filter(input,fullmatch))
   st.button('変更する',
             on_click = general.edit,
             args = (edit_tab_df,))
