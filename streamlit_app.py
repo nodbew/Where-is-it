@@ -40,10 +40,10 @@ with data:
   input = st.text_input('絞り込み...',key='edit_input')
   fullmatch = st.checkbox('完全一致',key='edit_fullmatch')
   st.info('直接書き換えられます！')
-  df = st.dataframe(general.filter(input,fullmatch))
+  edit_tab_df = st.dataframe(general.filter(input,fullmatch))
   st.button('変更する',
             on_click = general.edit,
-            args = tuple(df,))
+            args = tuple(edit_tab_df,))
 
 with files:
   st.write('保存タブへようこそ！ここでは現在のデータをファイルに保存したり、過去に保存したファイルから読み込んだりできます')
