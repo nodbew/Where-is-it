@@ -18,7 +18,7 @@ with main:
   st.write('ようこそ一覧へ！ここでは登録されたものの位置の一覧を確認できます')
   input = st.text_input('絞り込み...')
   fullmatch = st.checkbox('完全一致')
-  st.dataframe(general.filter(input,fullmatch))
+  df = st.dataframe(general.filter(input,fullmatch))
 
 with data:
   st.write('ようこそデータ管理へ！ここでは登録を変更したり、削除したりできます')
@@ -38,8 +38,8 @@ with data:
 
   # Edit data
   input = st.text_input('絞り込み...',key='edit_input')
-  st.info('直接書き換えられます！')
   fullmatch = st.checkbox('完全一致',key='edit_fullmatch')
+  st.info('直接書き換えられます！')
   df = st.dataframe(general.filter(input,fullmatch))
   if st.button('変更する'):
     general.edit(df)
