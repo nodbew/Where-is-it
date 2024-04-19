@@ -35,7 +35,7 @@ class DataAdminister:
     return json.dumps(st.session_state._name_location_dictionary).encode()
 
   def load_from_file(self,file):
-    data = file.read()
+    data = file.getvalue()
 
     # Get dictionary from file
     try:
