@@ -43,7 +43,7 @@ with data:
   edit_tab_df = st.dataframe(general.filter(input,fullmatch))
   st.button('変更する',
             on_click = general.edit,
-            args = tuple(edit_tab_df,))
+            args = (edit_tab_df,))
 
 with files:
   st.write('保存タブへようこそ！ここでは現在のデータをファイルに保存したり、過去に保存したファイルから読み込んだりできます')
