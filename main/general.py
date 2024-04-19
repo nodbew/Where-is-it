@@ -48,8 +48,10 @@ def filter(input,fullmatch):
       [st.session_state._name_location_dictionary[name] for name in names]
     )
 
-    return pd.DataFrame(np.stack([names,values]).transpose(),
-                        columns=['名前','場所'])
+    result = pd.DataFrame(np.stack([names,values]).transpose(),
+                          columns=['名前','場所'])
+    st.success(f'filter function successfully called on {time}, returned {result}')
+    return result
 
 def edit(new_df):
   items = new_df[new_df['名前'] != None]
