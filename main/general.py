@@ -22,11 +22,6 @@ def broadcast_add(df):
     add(name,location)
   return
 
-def _name_location_dic_to_df():
-  dic = st.session_state._name_location_dictionary
-  names,locations = np.array([dic.keys()]),np.array([dic.values()])
-  return pd.DataFrame(np.stack([names,locations]).transpose(),columns=['名前','場所'])
-
 def filter(input,fullmatch): 
   '''
   Filters dataframe by whether input is contained in a key of st.session_state._name_location_dictionary
@@ -53,11 +48,10 @@ def filter(input,fullmatch):
 
 def edit(new_df):
   items = new_df[new_df['名前'] != None]
-  df = _name_location_dic_to_df()
   for name,location in items:
-    if name not in df:
+    if name not in st.session_state._name_location_dictionary:
       raise_error(f'{name}は登録されていません')
     else:
-      name[df] = location
-  st.success('変更しました')
+      st.session_state._name_location_dictionary[name] = location
+      st.success('変更しました')
   return
