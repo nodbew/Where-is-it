@@ -31,7 +31,7 @@ with data:
   st.title('削除')
   name = st.text_input('削除したいものの名前を入力してください')
   if st.button('削除する'):
-    st.session)state._DataAdmin.delete(name)
+    st.session_state._DataAdmin.delete(name)
 
   # Edit data
   st.title('編集')
