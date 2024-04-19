@@ -1,6 +1,8 @@
 import streamlit as st
-if "_postprocess" not in st.session_state:
-  st.session_state._postprocess = dict()
+def initialize():
+  if "_postprocess" not in st.session_state:
+    st.session_state._postprocess = dict()
+  return
 
 def raise_error(message,execution=2):
   # Command to execute while postprocess
@@ -28,13 +30,15 @@ def success(message,execution=2):
 
   return
 
-# postprocess
-for key in st.session_state._postprocess.keys():
-  st.session_state._errors[key] -= 1
+def postprocess():
+  # postprocess
+  for key in st.session_state._postprocess.keys():
+    st.session_state._postprocess[key] -= 1
 
-  # Raise error
-  exec(key)
+    # Raise error
+    exec(key)
 
-  # Stop raising error when there is no execution count remaining
-  if st.session_state._errors[key] == 0:
-    del st.session_state._errors[key]
+    # Stop raising error when there is no execution count remaining
+    if st.session_state._errors[key] == 0:
+      del st.session_state._errors[key]
+  return
