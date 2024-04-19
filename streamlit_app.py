@@ -26,14 +26,14 @@ with data:
   edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
   st.button('追加する',
             on_click = general.broadcast_add,
-            args = tuple(edited_df,))
+            args = (edited_df,))
 
   # Delete data
   st.title('削除')
   name = st.text_input('削除したいものの名前を入力してください')
   st.button('削除する',
             on_click = st.session_state._DataAdmin.delete,
-            args = tuple(name,))
+            args = (name,))
 
   # Edit data
   st.title('編集')
@@ -57,4 +57,4 @@ with files:
   st.title('アップロード')
   f = st.file_uploader('アップロード',
                        on_click = st.session_state._DataAdmin.load_from_file,
-                       args = tuple(f,))
+                       args = (f,))
