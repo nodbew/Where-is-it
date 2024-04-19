@@ -24,14 +24,16 @@ with data:
   st.title('追加')
   st.info('直接書き込めます...')
   edited_df = st.data_editor(pd.DataFrame([[None,None]],columns=['名前','場所']),num_rows='dynamic')
-  if st.button('追加する'):
-    general.broadcast_add(edited_df)
+  if st.button('追加する',
+               on_click = general.broadcast_add,
+               args = tuple(edited_df))
 
   # Delete data
   st.title('削除')
   name = st.text_input('削除したいものの名前を入力してください')
-  if st.button('削除する'):
-    st.session_state._DataAdmin.delete(name)
+  st.button('削除する',
+            on_click = st.session_state._DataAdmin.delete,
+            args = tuple(name))
 
   # Edit data
   st.title('編集')
@@ -39,11 +41,11 @@ with data:
   fullmatch = st.checkbox('完全一致',key='edit_fullmatch')
   st.info('直接書き換えられます！')
   df = st.dataframe(general.filter(input,fullmatch))
-  if st.button('変更する'):
-    general.edit(df)
+  st.button('変更する',
+            on_click = general.edit,
+            args = tuple(df))
 
 with files:
-  st.write(st.session_state._name_location_dictionary)
   st.write('保存タブへようこそ！ここでは現在のデータをファイルに保存したり、過去に保存したファイルから読み込んだりできます')
 
   # Save to a file
@@ -53,6 +55,6 @@ with files:
 
   # Load from a file
   st.title('アップロード')
-  f = st.file_uploader('アップロード')
-  if f != None:
-    st.session_state._DataAdmin.load_from_file(f)
+  f = st.file_uploader('アップロード',
+                       on_click = st.session_state._DataAdmin.load_from_file,
+                       args = tuple(f))
